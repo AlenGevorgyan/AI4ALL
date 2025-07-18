@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI4ALL - Ծրագրեր</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6D28D9',
+                        secondary: '#4F46E5',
+                        accent: '#8B5CF6',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #6D28D9 0%, #4F46E5 50%, #8B5CF6 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        .floating-delay-1 {
+            animation: floating 6s ease-in-out 1s infinite;
+        }
+        
+        .floating-delay-2 {
+            animation: floating 6s ease-in-out 2s infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.03);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(90deg, #FFFFFF 0%, #E0E7FF 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .program-card {
+            transition: all 0.3s ease;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        
+        .tab-button.active {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: white;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Navigation -->
+    <nav class="nav-glass fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center mr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-purple-600">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                                </svg>
+                            </div>
+                            <span class="text-white font-bold text-xl">AI4ALL</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-white hover:bg-opacity-20 transition">Գլխավոր</a>
+                        <a href="about.html" class="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-white hover:bg-opacity-20 transition">Մեր Մասին</a>
+                        <a href="programs.html" class="px-3 py-2 rounded-md text-sm font-medium text-white bg-white bg-opacity-20">Ծրագրեր</a>
+                        <a href="contact.html" class="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-white hover:bg-opacity-20 transition">Կապ</a>
+                    </div>
+                </div>
+                 <div class="ml-4 flex items-center">
+                        <a href="login.html" class="px-4 py-2 bg-white text-purple-700 rounded-md font-medium hover:bg-opacity-90 transition">Մուտք</a>
+                    </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white hover:bg-white hover:bg-opacity-20 focus:outline-none transition" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="hidden md:hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-white hover:bg-opacity-20 transition">Գլխավոր</a>
+                <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-white hover:bg-opacity-20 transition">Մեր Մասին</a>
+                <a href="programs.html" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-white bg-opacity-20">Ծրագրեր</a>
+                <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-white hover:bg-opacity-20 transition">Կապ</a>
+            </div>
+            <div class="ml-4 flex items-center">
+                        <a href="login.html" class="px-4 py-2 bg-white text-purple-700 rounded-md font-medium hover:bg-opacity-90 transition">Մուտք</a>
+                    </div>
+        </div>
+         
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 text-gradient">Մեր Ծրագրերը</h1>
+                <p class="text-xl md:text-2xl max-w-3xl mx-auto text-white opacity-90">
+                    Բացահայտեք մեր կրթական ծրագրերը, որոնք նախատեսված են տարբեր մակարդակների և մասնագիտությունների համար: Ընտրեք ձեզ համապատասխան ծրագիրը և սկսեք ձեր ուղին արհեստական բանականության աշխարհում:
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Tabs -->
+    <section class="pb-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+
+            <!-- Programs Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="programs-container">
+                <!-- Program 1 -->
+                <div class="program-card glass-card p-8 rounded-2xl hover-scale" data-category="beginner">
+                    <div class="w-16 h-16 bg-purple-100 bg-opacity-20 rounded-lg flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">AI Հիմունքներ</h3>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">Սկսնակների համար</span>
+                        <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">4 շաբաթ</span>
+                        <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">Առցանց</span>
+                    </div>
+                    <p class="text-white opacity-90 mb-6">
+                        Հիմնական գիտելիքներ արհեստական բանականության մասին՝ սկսնակների համար։ Ծրագիրը ներառում է AI-ի հիմնական հասկացություններ, մեքենայական ուսուցման հիմունքներ և գործնական կիրառություններ առօրյա կյանքում։
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <div class="text-xl font-bold text-white">25,000 դրամ</div>
+                        <a href="#" class="px-4 py-2 bg-white text-purple-700 rounded-lg font-medium hover:bg-opacity-90 transition">
+                            Մանրամասն
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Program 2 -->
+                <div class="program-card glass-card p-8 rounded-2xl hover-scale" data-category="business">
+                    <div class="w-16 h-16 bg-purple-100 bg-opacity-20 rounded-lg flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.03-.387.062-.58.096m.58-.096a48.11 48.11 0 00-3.413-.387m4.5 8.006v.006m0 0v.006m0 0a2.18 2.18 0 01-.75 1.661m.75-1.661a2.18 2.18 0 001.661.75m-1.661-.75a2.18 2.18 0 00-1.661-.75m1.661-.75a48.1 48.1 0 00-3.413-.387M12 12.75a2.18 2.18 0 01-1.661-.75M12 12.75a2.18 2.18 0 00-1.661.75m12.82-1.661a48.06 48.06 0 00-3.413-.387M21 12c0 .932-.636 1.726-1.519 1.938M9.75 9.75V8.706M9.75 9.75V8.706v0A1.125 1.125 0 018.625 7.5h-.879M9.75 9.75v0A1.125 1.125 0 0110.875 8.25h1.5c.621 0 1.125.504 1.125 1.125m-8.625 0v0c0-.621.504-1.125 1.125-1.125h1.5A1.125 1.125 0 0112 8.25v0m0 0v0a1.125 1.125 0 011.125-1.125h1.5A1.125 1.125 0 0115.75 8.25v0" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">AI Բիզնեսի համար</h3>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">Բիզնես</span>
+                        <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">6 շաբաթ</span>
+                        <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">Հիբրիդ</span>
+                    </div>
+                    <p class="text-white opacity-90 mb-6">
+                        Ծրագիր ձեռնարկատերերի և բիզնեսի ղեկավարների համար, որն ուղղված է բիզնես գործընթացների օպտիմալացմանը AI գործիքների միջոցով։ Ծածկում է տվյալների վերլուծություն, ավտոմատացում և հաճախորդների հետ աշխատանք։
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <div class="text-xl font-bold text-white">45,000 դրամ</div>
+                        <a href="#" class="px-4 py-2 bg-white text-purple-700 rounded-lg font-medium hover:bg-opacity-90 transition">
+                            Մանրամասն
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Program 3 -->
+                <div class="program-card glass-card p-8 rounded-2xl hover-scale" data-category="education">
+                    <div class="w-16 h-16 bg-purple-100 bg-opacity-20 rounded-lg flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-5.342m0 0a50.655 50.655 0 013.686-1.342m.438 18.918A50.72 50.72 0 0012 21.75a50.721 50.721 0 00-7.814-1.439m-3.682-18.92a50.666 50.666 0 013.683-1.342m8.132 0a50.673 50.673 0 013.686 1.342m0 0a50.593 50.593 0 011.022.55 59.944 59.944 0 01-1.016.55 50.66 50.66 0 00-1.017-.55m3.681-1.343a50.655 50.655 0 00-3.681 1.343m0 0a50.635 50.635 0 00-1.019.551 59.969 59.969 0 01-1.016-.551m3.682-1.342A50.62 50.62 0 0012 13.49a50.62 50.62 0 00-3.682-1.342m0 0a50.6 50.6 0 00-1.016.551 59.987 59.987 0 011.016.55z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">AI Կրթության համար</h3>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">Կրթություն</span>
+                        <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">5 շաբաթ</span>
+                        <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">Առցանց</span>
+                    </div>
+                    <p class="text-white opacity-90 mb-6">
+                        Մասնագիտացված ծրագիր ուսուցիչների և կրթական ոլորտի մասնագետների համար։ Ծրագիրը ներառում է AI գործիքների կիրառում ուսուցման գործընթացում, անհատականացված ուսուցում և գնահատման ավտոմատացված համակարգեր։
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <div class="text-xl font-bold text-white">35,000 դրամ</div>
+                        <a href="#" class="px-4 py-2 bg-white text-purple-700 rounded-lg font-medium hover:bg-opacity-90 transition">
+                            Մանրամասն
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Program 4 -->
+                <div class="program-card glass-card p-8 rounded-2xl hover-scale" data-category="advanced">
+                    <div class="w-16 h-16 bg-purple-100 bg-opacity-20 rounded-lg flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Խորը ուսուցում և նեյրոնային ցանցեր</h3>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">Ընդլայնված</span>
+                        <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">8 շաբաթ</span>
+                        <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">Հիբրիդ</span>
+                    </div>
+                    <p class="text-white opacity-90 mb-6">
+                        Ընդլայնված ծրագիր նրանց համար, ովքեր ցանկանում են խորանալ նեյրոնային ցանցերի և խորը ուսուցման աշխարհը: Ծրագիրը ներառում է TensorFlow և PyTorch գործիքների օգտագործում, համակարգչային տեսողություն և բնական լեզվի մշակում:
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <div class="text-xl font-bold text-white">65,000 դրամ</div>
+                        <a href="#" class="px-4 py-2 bg-white text-purple-700 rounded-lg font-medium hover:bg-opacity-90 transition">
+                            Մանրամասն
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Program 5 -->
+                <div class="program-card glass-card p-8 rounded-2xl hover-scale" data-category="business">
+                    <div class="w-16 h-16 bg-purple-100 bg-opacity-20 rounded-lg flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">AI շուկայավարում</h3>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">Բիզնես</span>
+                        <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">4 շաբաթ</span>
+                        <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">Առցանց</span>
+                    </div>
+                    <p class="text-white opacity-90 mb-6">
+                        Ծրագիր շուկայավարների համար, որը կենտրոնանում է AI-ի կիրառման վրա հաճախորդների վարքագծի կանխատեսման, անձնավորված առաջարկների և ավտոմատացված գովազդային արշավների ստեղծման վրա:
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <div class="text-xl font-bold text-white">38,000 դրամ</div>
+                        <a href="#" class="px-4 py-2 bg-white text-purple-700 rounded-lg font-medium hover:bg-opacity-90 transition">
+                            Մանրամասն
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Program 6 -->
+                <div class="program-card glass-card p-8 rounded-2xl hover-scale" data-category="beginner">
+                    <div class="w-16 h-16 bg-purple-100 bg-opacity-20 rounded-lg flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">AI սկսնակների համար</h3>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">Սկսնակների համար</span>
+                        <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">3 շաբաթ</span>
+                        <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">Առցանց</span>
+                    </div>
+                    <p class="text-white opacity-90 mb-6">
+                        Համառոտ դասընթաց նրանց համար, ովքեր նոր են ծանոթանում արհեստական բանականության աշխարհին: Ծրագիրը ներառում է հիմնական հասկացություններ, AI-ի կիրառման օրինակներ և պարզ գործնական առաջադրանքներ:
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <div class="text-xl font-bold text-white">18,000 դրամ</div>
+                        <a href="#" class="px-4 py-2 bg-white text-purple-700 rounded-lg font-medium hover:bg-opacity-90 transition">
+                            Մանրամասն
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Free Programs Section -->
+            <div class="mt-24">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gradient">Անվճար Ծրագրեր</h2>
+                    <div class="w-24 h-1 bg-white mx-auto opacity-30"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Free Program 1 -->
+                    <div class="program-card glass-card p-8 rounded-2xl hover-scale">
+                        <div class="w-16 h-16 bg-purple-100 bg-opacity-20 rounded-lg flex items-center justify-center mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a2.25 2.25 0 00-2.25-2.25H15a3 3 0 11-6 0H5.25A2.25 2.25 0 003 12m18 0v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 9m18 0V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v3" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">AI-ի ներածություն</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">Սկսնակների համար</span>
+                            <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">2 շաբաթ</span>
+                            <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">Առցանց</span>
+                        </div>
+                        <p class="text-white opacity-90 mb-6">
+                            Անվճար ներածական դասընթաց արհեստական բանականության հիմունքների մասին: Իմացեք, թե ինչ է AI-ն, ինչպես է այն աշխատում և ինչպես է փոխում մեր կյանքը:
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="text-xl font-bold text-green-300">Անվճար</div>
+                            <a href="#" class="px-4 py-2 bg-white text-purple-700 rounded-lg font-medium hover:bg-opacity-90 transition">
+                                Գրանցվել
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Free Program 2 -->
+                    <div class="program-card glass-card p-8 rounded-2xl hover-scale">
+                        <div class="w-16 h-16 bg-purple-100 bg-opacity-20 rounded-lg flex items-center justify-center mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">ChatGPT-ի հիմունքներ</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">Բոլորի համար</span>
+                            <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">1 շաբաթ</span>
+                            <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">Առցանց</span>
+                        </div>
+                        <p class="text-white opacity-90 mb-6">
+                            Սովորեք, թե ինչպես արդյունավետ օգտագործել ChatGPT-ն ձեր առօրյա և մասնագիտական կարիքների համար: Իմացեք հուզիչ հնարքներ և լավագույն պրակտիկաներ:
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="text-xl font-bold text-green-300">Անվճար</div>
+                            <a href="#" class="px-4 py-2 bg-white text-purple-700 rounded-lg font-medium hover:bg-opacity-90 transition">
+                                Գրանցվել
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Free Program 3 -->
+                    <div class="program-card glass-card p-8 rounded-2xl hover-scale">
+                        <div class="w-16 h-16 bg-purple-100 bg-opacity-20 rounded-lg flex items-center justify-center mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">AI անվտանգություն</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">Բոլորի համար</span>
+                            <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">1 շաբաթ</span>
+                            <span class="px-3 py-1 bg-white bg-opacity-10 rounded-full text-xs text-white">Առցանց</span>
+                        </div>
+                        <p class="text-white opacity-90 mb-6">
+                            Սովորեք, թե ինչպես ապահով օգտագործել արհեստական բանականության գործիքները: Իմացեք ձեր տվյալների պաշտպանության հիմունքները և խուսափեք հնարավոր վտանգներից:
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="text-xl font-bold text-green-300">Անվճար</div>
+                            <a href="#" class="px-4 py-2 bg-white text-purple-700 rounded-lg font-medium hover:bg-opacity-90 transition">
+                                Գրանցվել
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-white bg-opacity-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gradient">Մասնակիցների կարծիքները</h2>
+                <div class="w-24 h-1 bg-white mx-auto opacity-30"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="glass-card p-8 rounded-2xl hover-scale">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Testimonial" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <div class="font-medium">Անի Մկրտչյան</div>
+                            <div class="text-sm text-purple-200">Մարքեթոլոգ</div>
+                        </div>
+                    </div>
+                    <p class="text-white opacity-90 mb-6 italic">
+                        "AI Բիզնեսի համար" դասընթացը փոխեց իմ մոտեցումը հաճախորդների հետ աշխատանքին: Այժմ ես օգտագործում եմ AI գործիքներ հաճախորդների վարքագիծը վերլուծելու և անձնավորված առաջարկներ ստեղծելու համար: Դասընթացի գործնական մասը հատկապես օգտակար էր:
+                    </p>
+                    <div class="flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-yellow-300">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-yellow-300">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-yellow-300">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-yellow-300">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-yellow-300">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="glass-card p-8 rounded-2xl hover-scale">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Testimonial" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <div class="font-medium">Արթուր Պետրոսյան</div>
+                            <div class="text-sm text-purple-200">Փոքր բիզնեսի սեփականատեր</div>
+                        </div>
+                    </div>
+                    <p class="text-white opacity-90 mb-6 italic">
+                        "AI սկսնակների համար" դասընթացը հիանալի ներածություն էր արհեստական բանականության աշխարհ: Չնայած որ ես տեխնիկական կրթություն չունեմ, դասախոսները շատ հասկանալի էին բացատրում բարդ թեմաները: Այժմ ես կարողանում եմ օգտագործել պարզ AI գործիքներ իմ բիզնեսում:
+                    </p>
+                    <div class="flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-yellow-300">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-yellow-300">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-yellow-300">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-yellow-300">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-yellow-300">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="glass-card p-8 rounded-2xl hover-scale">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Testimonial" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <div class="font-medium">Լուսինե Ավետիսյան</div>
+                            <div class="text-sm text-purple-200">Ուսուցչուհի</div>
+                        </div>
+                    </div>
+                    <p class="text-white opacity-90 mb-6 italic">
+                        "AI Կրթության համար" դասընթացը բացահայտեց ինձ համար AI-ի անսահման հնարավորությունները կրթության մեջ: Այժմ ես օգտագործում եմ AI գործիքներ դասերի պլանավորման, անհատականացված առաջադրանքների ստեղծման և աշակերտների աշխատանքի գնահատման համար: Առաջարկում եմ բոլոր ուսուցիչներին:
+                    </p>
+                    <div class="flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-yellow-300">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-yellow-300">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-yellow-300">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-yellow-300">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-yellow-300">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
